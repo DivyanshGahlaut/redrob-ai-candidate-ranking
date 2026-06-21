@@ -155,4 +155,7 @@ python tests/test_semantic_matcher_faiss.py
 
 **Team Name**: Corporate Busters  
 **Members**:  
-- **Divyansh Gahlaut** (ML / Backend Engineer)
+- **Divyansh Gahlaut** (Team Leader / ML Engineer)
+- **Mohd Hamza** (Backend Engineer)
+- **Shikhar Vajpayi** (Data Analyst)
+- **Nimisha Tiwari** (ML Engineer)
