@@ -1,0 +1,105 @@
+# Redrob Hackathon — Submission Metadata
+#
+# Fill in the placeholder fields marked TODO before submitting via the portal.
+# This file mirrors what's collected at upload time (submission_spec.md
+# Section 10.2) and is used at Stage 3 to verify portal metadata.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "Corporate Busters"
+
+primary_contact:
+  name: "Divyansh Gahlaut"
+  email: "divyanshgahlaut.jobs@gmail.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Divyansh Gahlaut"
+    email: "divyanshgahlaut.jobs@gmail.com"
+    role: "ML Engineer"
+  # Add more members as needed; solo participants list just one member
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/DivyanshGahlaut/redrob-ai-candidate-ranking.git"
+# Required. Must be reachable. Private repos OK if you can grant organizer
+# access at Stage 3.
+
+sandbox_link: "TODO — e.g. https://huggingface.co/spaces/TODO-username/redrob-ranker"
+# Required. See submission_spec.md Section 10.5 for acceptable platforms
+# (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
+# The sandbox only needs to handle a small (<=100 candidate) sample.
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+# The single command that produces submission.csv from candidates.jsonl.
+# Runs end-to-end in ~80s on a single CPU core / ~4GB RAM in testing — well
+# inside the 5-minute / 16GB / CPU-only / no-network budget. (Place
+# candidates.jsonl at the repo root, or pass --candidates with its actual path.)
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "TODO — e.g. MacBook Pro M2 / AWS EC2 / Local Linux box"
+  cpu_cores: 1  # measured on a 1-vCPU sandbox; update to your actual machine
+  ram_gb: 4     # measured on a 4GB sandbox; update to your actual machine
+  python_version: "3.12"
+  os: "TODO — e.g. macOS 14.2 / Ubuntu 22.04 LTS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+  # Other options: "ChatGPT", "Copilot", "Cursor", "Gemini", "Other", "None"
+
+ai_usage_summary: |
+  Used Claude (Anthropic) for architecture discussion, code review, data
+  exploration of candidate patterns (title/skill/honeypot trap detection),
+  iterative debugging of the scoring logic (including catching and fixing a
+  keyword-stuffer-vulnerability bug in the skill-trust-weighting function),
+  and test design. All scoring logic, feature engineering decisions, and
+  weight calibration were reviewed and validated against the actual
+  candidates.jsonl dataset before finalizing. No candidate data was sent to
+  any external API during the ranking step itself -- the ranking pipeline
+  runs entirely locally with no network access, per the compute constraints.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Multi-signal ranker, no LLM calls during ranking (CPU-only, <90s for 100K
+  candidates). Components: (1) TF-IDF + truncated SVD semantic similarity
+  between candidate free text and the JD's meaning-dense sections; (2)
+  trust-weighted structured skill matching against the JD's must-have/
+  nice-to-have skill inventory, where skill credit is gated by
+  duration_months and endorsements rather than the proficiency label alone
+  -- the direct countermeasure to the dataset's keyword-stuffer trap (~5,200
+  candidates with irrelevant titles but AI-keyword-stuffed skill lists); (3)
+  title-relevance bucketing and title<->description coherence checks; (4)
+  multiplicative disqualifier penalties for the JD's named near-hard-no's
+  (pure-services-only career, research-only/no-production, CV-or-speech-
+  primary without NLP, architecture drift, frequent job-hopping, non-India
+  location without visa sponsorship); (5) a behavioral-signal multiplier
+  from the 23 redrob_signals fields (recency-decayed last-active, recruiter
+  response rate, interview completion, offer acceptance); (6) a 4-check
+  internal-consistency honeypot detector hard-gating candidates with 2+
+  independent flags (YOE-vs-history mismatch, duration-vs-dates mismatch,
+  expert-with-zero-duration skills, education date inversion). Full 100K
+  run: ~80s, ~2.8GB peak RAM, 0 honeypots in final top 100.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
