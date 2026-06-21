@@ -1,6 +1,6 @@
 # AI Candidate Ranking System — Corporate Busters
 
-A CPU-only, no-network, highly scalable candidate discovering and ranking system. It reads a Job Description, processes large candidate pools (tested up to 100,000 records), and surfaces the top 100 candidates that a senior technical recruiter would actually want to talk to — instead of candidates with the most keywords.
+A highly scalable AI candidate ranking system that supports both fully offline ranking and optional LLM-powered enhancements for job description understanding and recruiter assistance.
 
 Repository link: [redrob-ai-candidate-ranking](https://github.com/DivyanshGahlaut/redrob-ai-candidate-ranking.git)
 
@@ -26,6 +26,21 @@ Our hybrid ranking system combines structured constraint checks with dense vecto
 - **Honeypot Hard-Gate**: Runs 4 independent temporal and skill consistency checks, flooring any profile triggering $\ge 2$ flags.
 - **Behavioral Signal Blending**: Multiplies the fit score by a recency-decayed login and response rate index.
 - **Interactive AI Recruiter Assistant**: A Streamlit interface letting recruiters ask custom queries (grounded in profiles via Gemini API) to explain ranking choices in natural language.
+
+---
+
+## Execution Modes
+
+### Offline Ranking Mode
+- CPU-only
+- No network access required
+- Uses precomputed embeddings and FAISS retrieval
+- Generates the final submission.csv
+
+### Optional AI Enhancement Mode
+- Gemini-powered Job Description parsing
+- AI Recruiter Assistant
+- Natural language explanations and candidate exploration
 
 ---
 
