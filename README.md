@@ -58,11 +58,11 @@ graph TD
     Gen_Reasoning --> Output([outputs/submission.csv <br> Top 100 Ranked Candidates])
 
     %% Styling
-    style JD fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
-    style Cands fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
-    style Output fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
-    style HP_Gate fill:#ffe0b2,stroke:#ff9800,stroke-width:2px;
-    style Floor fill:#ffebee,stroke:#f44336,stroke-width:2px;
+    style JD fill:#0d47a1,stroke:#03a9f4,stroke-width:2px,color:#ffffff;
+    style Cands fill:#0d47a1,stroke:#03a9f4,stroke-width:2px,color:#ffffff;
+    style Output fill:#1b5e20,stroke:#4caf50,stroke-width:2px,color:#ffffff;
+    style HP_Gate fill:#e65100,stroke:#ff9800,stroke-width:2px,color:#ffffff;
+    style Floor fill:#b71c1c,stroke:#f44336,stroke-width:2px,color:#ffffff;
 ```
 
 ---
