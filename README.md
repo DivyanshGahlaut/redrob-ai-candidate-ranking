@@ -18,14 +18,16 @@ Recruiters go through hundreds of profiles and often miss the right person becau
 
 ## 2. Our Solution
 
-Our hybrid ranking system combines structured constraint checks with dense vector semantics:
-- **Deeper Semantic Understanding**: Swaps between custom TF-IDF + SVD (LSA) and modern transformer-based sentence embeddings (`all-MiniLM-L6-v2`) to capture career narrative relevance instead of simple keyword bag matches.
-- **FAISS Vector Indexing**: L2-normalizes candidate embeddings and uses FAISS flat inner-product searches for high-speed indexing and retrieval.
-- **Structured Trust Calibration**: Gates skill proficiency scores using actual duration (months) and social endorsements to neutralize keyword stuffers.
-- **Multiplicative Disqualifier Checks**: Applies severe penalties for service-firm-only careers, research-only backgrounds with no production deployment, and non-India locations without visa sponsorship.
-- **Honeypot Hard-Gate**: Runs 4 independent temporal and skill consistency checks, flooring any profile triggering $\ge 2$ flags.
-- **Behavioral Signal Blending**: Multiplies the fit score by a recency-decayed login and response rate index.
-- **Interactive AI Recruiter Assistant**: A Streamlit interface letting recruiters ask custom queries (grounded in profiles via Gemini API) to explain ranking choices in natural language.
+A multi-layer recruitment engine that combines semantic search, structured scoring, and behavioral signals to produce accurate and explainable candidate rankings.
+
+**Semantic Matching**: Uses transformer embeddings (all-MiniLM-L6-v2) with optional TF-IDF + SVD fallback to capture deep career relevance beyond keyword matching.
+**Fast Retrieval**: FAISS-based vector search with L2-normalized embeddings for efficient large-scale candidate retrieval.
+**Skill Trust Scoring**: Validates skills using experience duration and endorsement strength to reduce profile manipulation.
+**Constraint Filtering**: Applies strict rules to remove non-viable candidates (no production work, irrelevant backgrounds, location/visa mismatch).
+**Integrity Checks**: Detects inconsistencies in timelines and skill progression; flags suspicious profiles.
+**Behavioral Weighting**: Uses recency and engagement signals to adjust final ranking scores dynamically.
+**Final Hybrid Score**: Combines semantic fit, structured skill confidence, penalties, and behavioral factors into a single ranking score.
+**AI Recruiter Interface**: Streamlit-based system with LLM explanations (Gemini API) for natural language queries and “why this candidate” reasoning.
 
 ---
 
