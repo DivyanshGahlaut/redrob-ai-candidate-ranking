@@ -21,12 +21,19 @@ Recruiters go through hundreds of profiles and often miss the right person becau
 A multi-layer recruitment engine that combines semantic search, structured scoring, and behavioral signals to produce accurate and explainable candidate rankings.
 
 **Semantic Matching**: Uses transformer embeddings (all-MiniLM-L6-v2) with optional TF-IDF + SVD fallback to capture deep career relevance beyond keyword matching.
+
 **Fast Retrieval**: FAISS-based vector search with L2-normalized embeddings for efficient large-scale candidate retrieval.
+
 **Skill Trust Scoring**: Validates skills using experience duration and endorsement strength to reduce profile manipulation.
+
 **Constraint Filtering**: Applies strict rules to remove non-viable candidates (no production work, irrelevant backgrounds, location/visa mismatch).
+
 **Integrity Checks**: Detects inconsistencies in timelines and skill progression; flags suspicious profiles.
+
 **Behavioral Weighting**: Uses recency and engagement signals to adjust final ranking scores dynamically.
+
 **Final Hybrid Score**: Combines semantic fit, structured skill confidence, penalties, and behavioral factors into a single ranking score.
+
 **AI Recruiter Interface**: Streamlit-based system with LLM explanations (Gemini API) for natural language queries and “why this candidate” reasoning.
 
 ---
