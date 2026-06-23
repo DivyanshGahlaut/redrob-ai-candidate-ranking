@@ -103,9 +103,20 @@ graph TD
 ## 5. Setup & How to Run
 
 ### Installation
+
+It is highly recommended to use a virtual environment to avoid dependency conflicts:
+
 ```bash
+# Create the virtual environment
+python -m venv venv
+
+# Activate on Windows:
+venv\Scripts\activate
+# Activate on macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
 ### Step 1: Pre-compute Candidate Embeddings (Transformer Mode)
 Decouple the heavy transformer inference from the sandboxed offline ranker by compiling candidate embeddings beforehand:
