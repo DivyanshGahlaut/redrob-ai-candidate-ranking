@@ -1,3 +1,15 @@
+
+## Table of Contents
+- [1. The Problem](#1-the-problem)
+- [2. Our Solution](#2-our-solution)
+- [Execution Modes](#execution-modes)
+- [3. Architecture](#3-architecture)
+- [4. Tech Stack](#4-tech-stack)
+- [5. Setup & How to Run](#5-setup--how-to-run)
+- [6. Running Unit Tests](#6-running-unit-tests)
+- [7. Team](#7-team)
+
+
 # AI Candidate Ranking System — Corporate Busters
 
 A highly scalable AI candidate ranking system that supports both fully offline ranking and optional LLM-powered enhancements for job description understanding and recruiter assistance.
